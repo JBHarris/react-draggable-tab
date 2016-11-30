@@ -17,6 +17,7 @@ Tab.defaultProps = {
   title: 'untitled',
   afterTitle: <span />,
   disableClose: false,
+  disableDrag: false,
   tabClassNames: {
     tab: '',
     tabBefore: '',
@@ -40,6 +41,7 @@ Tab.propTypes = {
   ]).isRequired,
   afterTitle: React.PropTypes.element,
   disableClose: React.PropTypes.bool,
+  disableDrag: React.PropTypes.bool,
   tabClassNames: React.PropTypes.shape({
     tab: React.PropTypes.string,
     tabBefore: React.PropTypes.string,

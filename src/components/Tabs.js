@@ -181,12 +181,20 @@ class Tabs extends React.Component {
         });
       }
       if (this.props.shortCutKeys.moveRight) {
+        if(this.disableDrag){
+          e.preventDefault();
+          return;
+        }
         Mousetrap.bind(this.props.shortCutKeys.moveRight, (e) => {
           const ev = this._cancelEventSafety(e);
           this.moveRight(ev);
         });
       }
       if (this.props.shortCutKeys.moveLeft) {
+        if(this.disableDrag){
+          e.preventDefault();
+          return;
+        }
         Mousetrap.bind(this.props.shortCutKeys.moveLeft, (e) => {
           const ev = this._cancelEventSafety(e);
           this.moveLeft(ev);
@@ -204,6 +212,10 @@ class Tabs extends React.Component {
   }
 
   handleDrag(key, e) {
+    if(this.disableDrag){
+        e.preventDefault();
+        return;
+    }
     const deltaX = (e.pageX || e.clientX);
     _.each(this.startPositions, (pos) => {
       const tempMoved = pos.moved || 0;
